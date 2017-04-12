@@ -1,0 +1,64 @@
+
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Sleep Tracker - Home - </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+   <!-- <ion-card> -->
+        <ion-list>
+            <!------------------------------>
+            
+            <div class="row" style="width:90%;">
+                <div class="col-md-9">
+                    <div style="display: block;">
+                        <canvas baseChart width="400" height="400"
+                                [datasets]="lineChartData"
+                                [labels]="lineChartLabels"
+                                [options]="lineChartOptions"
+                                [colors]="lineChartColors"
+                                [legend]="lineChartLegend"
+                                [chartType]="lineChartType"
+                                (chartHover)="chartHovered($event)"
+                                (chartClick)="chartClicked($event)"></canvas>
+                    </div>
+                </div>
+
+                <button ion-button round (click)="sleep()" style="width:40%;" [disabled]="disableSleep">
+                    <div>
+                        <ion-icon name="eye-off"></ion-icon> Sleep
+                    </div>
+                </button>
+                <button ion-button round (click)="wake()" style="position: absolute; right: 0; width:40%;" [disabled]="disableWake" >
+                    <div>
+                       Wake-Up <ion-icon name="eye"></ion-icon>
+                    </div>
+                </button>
+
+                <!--
+                <div class="col-md-6" style="margin-bottom: 10px">
+                    <table class="table table-responsive table-condensed">
+                        <tr>
+                            <th *ngFor="let label of lineChartLabels">{{label}}</th>
+                        </tr>
+                        <tr *ngFor="let d of lineChartData">
+                            <td *ngFor="let label of lineChartLabels; let j=index">{{d && d.data[j]}}</td>
+                        </tr>
+                    </table>
+               
+                </div>
+                     -->
+            </div>
+
+
+            <!------------------------------>
+        </ion-list>
+   <!--</ion-card>--> 
+
+
+  <!--  <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="date"></ion-datetime>  -->
+
+</ion-content>

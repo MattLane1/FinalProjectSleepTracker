@@ -1,0 +1,25 @@
+<!--
+    Purpose: This is the settings page. It allows the user to change settings in the program, 
+    for now, that is limited to changing the colour of the chart. 
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Sleep Tracker - Settings - </ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+    <ion-list>
+        <div class="row">
+                <!--List of colour options-->
+                <button ion-button full color="m_red" (click)="red()">Red</button> 
+                <button ion-button full color="m_green" (click)="green()">Green</button>
+                <button ion-button full color="m_blue" (click)="blue()">Blue</button>
+                <button ion-button full color="m_yellow" (click)="yellow()">Yellow</button>
+                <button ion-button full color="m_grey" (click)="grey()">Grey</button>
+                <button ion-button full color="m_black" (click)="black()">Black</button>
+        </div>
+    </ion-list>
+</ion-content>

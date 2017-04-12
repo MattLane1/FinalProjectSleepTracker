@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "240251808546",
+    "firebase_url": "https://sleeptracker-23f13.firebaseio.com",
+    "project_id": "sleeptracker-23f13",
+    "storage_bucket": "sleeptracker-23f13.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:240251808546:android:d3fa05454bda6c60",
+        "android_client_info": {
+          "package_name": "com.ionicframework.helloworldtabs775447"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "240251808546-u4fh6k8g6lmccfe4g94rmdv2p2qlivf5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB9zyJU2UCQ69MLn5IxPpfUweZZVCaTlyk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
