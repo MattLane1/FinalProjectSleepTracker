@@ -1,5 +1,12 @@
+<!--
+@Page - Home.html
+@Purpose - This is the homepage of my program, it is the main page where the graph is presented to the user    
+@Program - SleepTracker
+@Auther - Matthew Lane
+@Date - April 12th, 2017
+-->
 
-
+<!--Class header. Contains the title-->
 <ion-header>
   <ion-navbar>
     <ion-title>Sleep Tracker - Home - </ion-title>
@@ -7,11 +14,9 @@
 </ion-header>
 
 <ion-content padding>
-
-   <!-- <ion-card> -->
+   <!-- <ion-list> -->
         <ion-list>
-            <!------------------------------>
-            
+            <!--Create the chart on the HTML page, and populate it through TS contained variables connected to these, so a data change there happens here as well.-->
             <div class="row" style="width:90%;">
                 <div class="col-md-9">
                     <div style="display: block;">
@@ -27,38 +32,20 @@
                     </div>
                 </div>
 
+                <!--Sleep button to press when the user is going to sleep-->
                 <button ion-button round (click)="sleep()" style="width:40%;" [disabled]="disableSleep">
                     <div>
                         <ion-icon name="eye-off"></ion-icon> Sleep
                     </div>
                 </button>
+
+                <!--Wake button to press when the user wakes up-->
                 <button ion-button round (click)="wake()" style="position: absolute; right: 0; width:40%;" [disabled]="disableWake" >
                     <div>
                        Wake-Up <ion-icon name="eye"></ion-icon>
                     </div>
                 </button>
 
-                <!--
-                <div class="col-md-6" style="margin-bottom: 10px">
-                    <table class="table table-responsive table-condensed">
-                        <tr>
-                            <th *ngFor="let label of lineChartLabels">{{label}}</th>
-                        </tr>
-                        <tr *ngFor="let d of lineChartData">
-                            <td *ngFor="let label of lineChartLabels; let j=index">{{d && d.data[j]}}</td>
-                        </tr>
-                    </table>
-               
-                </div>
-                     -->
             </div>
-
-
-            <!------------------------------>
         </ion-list>
-   <!--</ion-card>--> 
-
-
-  <!--  <ion-datetime displayFormat="MMM DD, YYYY HH:mm" [(ngModel)]="date"></ion-datetime>  -->
-
 </ion-content>

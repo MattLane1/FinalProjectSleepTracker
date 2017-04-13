@@ -1,19 +1,28 @@
+/*
+@Page - Home.ts
+@Purpose - This is TypeScript page associated with the HomePage.     
+@Program - SleepTracker
+@Auther - Matthew Lane
+@Date - April 12th, 2017
+*/
+
 import { Component } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { NavController } from 'ionic-angular';
 import { Events } from 'ionic-angular';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
-
+/*Template and selector reference add to class*/
 @Component({
     selector: 'page-home',
     templateUrl: 'home.html'
 })
 
-
+/* Start of class coe */
 export class HomePage {
-    items: FirebaseListObservable<any[]>;
+    items: FirebaseListObservable<any[]>;// For work with firebase
 
+    //When the user wakes or sleeps, disable the other button
     disableSleep;
     disableWake;
 
@@ -30,42 +39,34 @@ export class HomePage {
 
     constructor(public navCtrl: NavController, public storage: Storage, public events: Events, af: AngularFire) {
 
+        //When the colour is changed, pick it up here to change the graph colour on the HTML
         this.events.subscribe('colour:changed', eventData => {
 
-          //  console.log("======COLOUR INFO======");
-          //  console.log("=colourChosen=", eventData);
-          //  console.log("=colourList=", this.lineChartColors);
-          //  console.log("=colourList[0]=", this.lineChartColors[0]);
-
+            //Connect the Firebase
             const itemObservable = af.database.object('/item');
-            itemObservable.update({ name: 'Golum!' });
+            itemObservable.update({ name: 'Test!' });
 
             this.items = af.database.list('/items');
             console.log(this.items);
 
-
+            //Assign background colour to the chart based on user selection
             console.log("=colourList[0]['backgroundColor']=--------Test", this.lineChartColors[0]['backgroundColor']);
             this.lineChartColors[0]['backgroundColor'] = eventData;
             console.log("=colourList[0]['backgroundColor']=--------Test", this.lineChartColors[0]['backgroundColor']);
 
-
-            //this.lineChartColors[0]['backgroundColor'];
-            // just trying refresh full variable
+            //Force chart update
             this.lineChartColors = this.lineChartColors.slice();
 
-
-            //console.log("=colourList[1]=", this.lineChartColors[1]);
-          //  console.log("=colourList[1]['backgroundColour']=", this.lineChartColors[1]['backgroundColour']);
-          //  console.log("=======================");
-           // this.lineChartColors[0]['backgroundColour'] = eventData;
         });
         this.disableWake = true;
     }
 
-    //Create the graph
+    //Create the array
     public lineChartData: Array<any> = [
         { data: [8.2, 7.5, 9.4, 6.8, 10.2, 7.8, 8.5, 9.2, 8, 6.5, 7], label: 'Time Slept' }
     ];
+
+    //Populate the graph options
     public lineChartLabels: Array<any> = ['3/28/2017', '3/29/2017', '3/30/2017', '3/31/2017', '4/1/2017', '4/2/2017', '4/3/2017', '4/4/2017', '4/5/2017', '4/6/2017', '4/7/2017' ];
     public lineChartOptions: any = {
         responsive: true,
@@ -86,6 +87,7 @@ export class HomePage {
         }
     }
 
+    //Default colour selection
     public lineChartColors: Array<any> = [
         { // grey
             backgroundColor: 'rgba(148,159,177,0.2)',
@@ -125,14 +127,6 @@ export class HomePage {
         //Get the current time and date
         this.sleepDate = new Date().toLocaleDateString();
         this.sleepTime = new Date().toLocaleTimeString();
-
-        //Debug
-        console.log('Sleep');
-        console.log(this.sleepTime);
-        console.log(this.sleepDate);
-
-       // this.lineChartLabels.push(this.currentDate);
-       // this.lineChartData.
 
     }
 
@@ -190,53 +184,8 @@ export class HomePage {
          }
 
         
-
-         /*
-         //TEMP
-         var tempMins = (passedMins / 100);
-         var tempTime = (String(passedHours).concat(".").concat(passedMins));
-         console.log("passedMins", passedMins);
-         console.log('passedHrs', passedHours);
-         console.log("tempMins", tempMins);
-         console.log("tempTime", tempTime);
-         //
-         */
-
-         /*
-
-         let _lineChartData: Array<any> = new Array(this.lineChartData.length);
-
-         for (let i = 0; i < this.lineChartData.length; i++) {
-
-             _lineChartData[i] = { data: new Array(this.lineChartData[i].data.length), label: this.lineChartData[i].label };
-
-             for (let j = 0; j < this.lineChartData[i].data.length; j++) {
-                 _lineChartData[i].data[j] = Math.floor((Math.random() * 100) + 1);
-
-             }
-         }
-         this.lineChartData = _lineChartData;
-
-        */
-         
-         /*
-         var tA = [];
-         for (var i = 0, item; item = this.lineChartData[i++];) {
-             tA[i] = new String(item[i]);
-         }
-         */
-         /*
-         for (var a = 0; a < this.lineChartData.length; a++)
-         {
-             tempArray[a] = Number(this.lineChartData[a]);
-             console.log("LoopNumber", Number(this.lineChartData[a]));
-         }
-         */
-
-         //********
-
-        //FOR TESTING --ONLY--
-        // Number(passedHours += 2);
+         //FOR TESTING --ONLY--
+          Number(passedHours += 2);
 
          //Record the time slept
          this.lineChartLabels.push(this.currentDate);
@@ -250,49 +199,7 @@ export class HomePage {
          comboArray[0] = this.lineChartData;
          comboArray[1] = this.lineChartLabels;
 
-
          this.events.publish('SleepWake:wake', comboArray);
-
-        /*
-         let data = this.lineChartData;
-         delete this.lineChartData;
-         this.lineChartData = data;
-        */
-         //DEBUG
-         console.log('----TIME DIFFERENCE-----');
-
-         console.log("TimeTable", this.lineChartData[0].data);
-         console.log("DayTable", this.lineChartLabels);
-
-        console.log('prevTime', prevTime);
-        console.log('curTime', curTime);
-
-        console.log('prevDate', prevDate);
-        console.log('curDate', curDate);
-
-        console.log('passedHours', passedHours);
-        console.log('passedMins', passedMins);
-        console.log('------------------------');
 
     }
 }
-
-         /*
-         //Check if at least a minute has passed. 
-         if (prevDate[0] == curDate[0]) {
-             console.log("day Same 0");
-             if (prevDate[1] == curDate[1]) {
-                 console.log("day Same 1");
-                 if (prevDate[2] == curDate[2]) {
-                     console.log("day Same 2");
-                     if (prevTime[0] == curTime[0]) {
-                         console.log("time Same 0");
-                         if (prevTime[1] == curTime[1]) {
-                             console.log("time Same 1");
-                             return;
-                         }
-                     }
-                 }
-             }
-         }
-         */

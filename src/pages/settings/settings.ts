@@ -1,18 +1,22 @@
+/*
+@Page - Settings.ts
+@Purpose - This is the settings TypeScript page of my program, it is where the Settings page connects the buttons and such
+@Program - SleepTracker
+@Auther - Matthew Lane
+@Date - April 12th, 2017
+*/
+
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Events } from 'ionic-angular';
 import { HomePage } from '../home/home';
 
-/*
-  Generated class for the Settings page.
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   selector: 'page-settings',
   templateUrl: 'settings.html'
 })
+
 export class SettingsPage {
 
     constructor(public navCtrl: NavController, public navParams: NavParams, public events: Events) {}
@@ -20,8 +24,6 @@ export class SettingsPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad SettingsPage');
   }
-
-
     //The user has selected Red
     red()
     {
